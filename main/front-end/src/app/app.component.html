@@ -1,0 +1,82 @@
+
+<!--Not Logged-->
+<body>
+  <div class="form-signin" *ngIf="!_userService.token">
+    <form class="form-signin">
+      
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UdeO_logo.png/240px-UdeO_logo.png" >
+        <h1 class="h3 mb-3 font-weight-normal">Sistema de consultas</h1>
+        
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" id="inputEmail" class="form-control" placeholder="Email address" name="login-username" [(ngModel)]="user.username" required autofocus>
+        <label for="inputEmail">Usuario</label>
+      </div>
+      <div class="form-label-group">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password"  name="login-password" [(ngModel)]="user.password" required>
+        <label for="inputPassword">Contraseña</label>
+      </div>
+
+     
+      <button (click)="login()" class="btn btn-lg btn-primary btn-block" >Ingresar</button>
+      <a href="/protectedview"> Vista protegida</a>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+    </form>
+    </div>
+  </body>
+
+
+<!--Logged-->
+
+  <body *ngIf="_userService.token">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" routerLink="/"><i class="material-icons">home</i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">school</i> Consultas</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" routerLink="/query/facultadesUniversidad">Facultades por universidad</a>
+              <a class="dropdown-item" routerLink="/query/facultades">Facultades</a>
+              <a class="dropdown-item" routerLink="/query/profesores">Profesores</a>
+              <a class="dropdown-item" routerLink="/query/universidad">Universidad</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/query/profesores"><i class="material-icons">face</i> Maestros<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                  <a class="nav-link"><i class="material-icons">account_circle</i> Conectado como {{ _userService.username}}<span class="sr-only">(current)</span></a>
+              </li>
+          </ul>
+          <button (click)="logout()" class="btn btn-outline-success my-2 my-sm-0" ><i class="material-icons">exit_to_app</i>Desconectar</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div class="starter-template">
+          <router-outlet></router-outlet>
+      </div>
+
+    </main><!-- /.container -->
+
+  </body>
+
+
+
+
+
+
+

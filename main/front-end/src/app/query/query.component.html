@@ -1,0 +1,16 @@
+<div *ngIf="sets">
+    <h1>ok</h1>
+    <table datatable [dtOptions]="dtOptions"  class="row-border hover">
+    
+            <thead>
+              <tr>
+                <th *ngFor="let key of checkData()" >{{ key }}</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let set of sets; index as i">
+                    <td *ngFor="let key of checkData()"> {{ set[key] }} </td>
+                </tr>
+            </tbody>
+    </table>
+    </div>
